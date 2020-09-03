@@ -1,11 +1,16 @@
 package com.mytaxi;
 
 import com.mytaxi.util.LoggingInterceptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -15,11 +20,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-public class MytaxiServerApplicantTestApplication extends WebMvcConfigurerAdapter
-{
+@ComponentScan(basePackages = "mytaxi")
+@EnableJpaRepositories(basePackages = "mytaxi")
+@EntityScan(basePackages = "mytaxi")
+public class MytaxiServerApplicantTestApplication implements WebMvcConfigurer {
 
+    private static final Logger logger = LoggerFactory.getLogger(MytaxiServerApplicantTestApplication.class);
     public static void main(String[] args)
     {
+        //test
+        logger.debug("Testing Logback");
+
+        logger.debug("Bribe your daughter for stealing your money for you.");
+        //test end
         SpringApplication.run(MytaxiServerApplicantTestApplication.class, args);
     }
 

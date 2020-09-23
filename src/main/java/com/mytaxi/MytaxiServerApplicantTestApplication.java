@@ -20,9 +20,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-@ComponentScan(basePackages = "mytaxi")
+/*@ComponentScan(basePackages = "mytaxi")
 @EnableJpaRepositories(basePackages = "mytaxi")
-@EntityScan(basePackages = "mytaxi")
+@EntityScan(basePackages = "mytaxi")*/
 public class MytaxiServerApplicantTestApplication implements WebMvcConfigurer {
 
     private static final Logger logger = LoggerFactory.getLogger(MytaxiServerApplicantTestApplication.class);

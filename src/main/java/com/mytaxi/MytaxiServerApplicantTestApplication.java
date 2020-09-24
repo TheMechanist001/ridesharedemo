@@ -1,8 +1,6 @@
 package com.mytaxi;
 
 import com.mytaxi.util.LoggingInterceptor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -25,14 +23,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EntityScan(basePackages = "mytaxi")*/
 public class MytaxiServerApplicantTestApplication implements WebMvcConfigurer {
 
-    private static final Logger logger = LoggerFactory.getLogger(MytaxiServerApplicantTestApplication.class);
     public static void main(String[] args)
     {
-        //test
-        logger.debug("Testing Logback");
-
-        logger.debug("Bribe your daughter for stealing your money for you.");
-        //test end
         SpringApplication.run(MytaxiServerApplicantTestApplication.class, args);
     }
 

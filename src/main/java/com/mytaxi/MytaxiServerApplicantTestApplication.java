@@ -3,10 +3,7 @@ package com.mytaxi;
 import com.mytaxi.util.LoggingInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
@@ -18,9 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-/*@ComponentScan(basePackages = "mytaxi")
-@EnableJpaRepositories(basePackages = "mytaxi")
-@EntityScan(basePackages = "mytaxi")*/
 public class MytaxiServerApplicantTestApplication implements WebMvcConfigurer {
 
     public static void main(String[] args)

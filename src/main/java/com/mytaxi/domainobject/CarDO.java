@@ -15,6 +15,7 @@ public class CarDO {
     private String manufacturer;
     private long selectedDriverId;
     private ZonedDateTime dateSelected;
+    private boolean isCarSelected;
 
     public UUID getCarId() {
         return carId;
@@ -56,10 +57,10 @@ public class CarDO {
         return dateSelected;
     }
 
-    public CarDO() {
+    private CarDO() {
     }
 
-    public CarDO(UUID carId, ZonedDateTime dateCreated, String licensePlate, int seatCount, boolean convertible, long rating, String engineType, String manufacturer, long selectedDriverId, ZonedDateTime dateSelected) {
+    public CarDO(UUID carId, ZonedDateTime dateCreated, String licensePlate, int seatCount, boolean convertible, long rating, String engineType, String manufacturer, long selectedDriverId, ZonedDateTime dateSelected, boolean isCarSelected) {
         this.carId = carId;
         this.dateCreated = dateCreated;
         this.licensePlate = licensePlate;
@@ -70,5 +71,10 @@ public class CarDO {
         this.manufacturer = manufacturer;
         this.selectedDriverId = selectedDriverId;
         this.dateSelected = dateSelected;
+        this.isCarSelected = isCarSelected;
+    }
+
+    public boolean isCarSelected() {
+        return isCarSelected;
     }
 }

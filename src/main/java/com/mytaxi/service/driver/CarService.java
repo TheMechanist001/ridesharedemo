@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CarService {
-    CarDO find(UUID carId) throws EntityNotFoundException;
+    CarDO findById(UUID carId) throws EntityNotFoundException;
 
     CarDO create(CarDO carDO) throws ConstraintsViolationException;
 
@@ -17,5 +17,5 @@ public interface CarService {
 
     void updateCarSelection(UUID carId, ZonedDateTime dateSelected, boolean isCarSelected, long selectedDriverId) throws EntityNotFoundException;
 
-    List<CarDO> find(boolean isCarSelected);
+    List<CarDO> findCars(boolean isCarSelected);
 }

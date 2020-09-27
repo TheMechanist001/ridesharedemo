@@ -26,7 +26,7 @@ public class DefaultCarService implements CarService {
     }
 
     @Override
-    public CarDO find(UUID carId) throws EntityNotFoundException {
+    public CarDO findById(UUID carId) throws EntityNotFoundException {
         return findCarChecked(carId);
     }
 
@@ -73,7 +73,7 @@ public class DefaultCarService implements CarService {
     }
 
     @Override
-    public List<CarDO> find(boolean isCarSelected) {
+    public List<CarDO> findCars(boolean isCarSelected) {
         return carRepository.findBySelectedStatus(isCarSelected);
     }
 

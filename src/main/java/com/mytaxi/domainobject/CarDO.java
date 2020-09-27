@@ -57,6 +57,10 @@ public class CarDO {
         return dateSelected;
     }
 
+    public boolean isCarSelected() {
+        return isCarSelected;
+    }
+
     private CarDO() {
     }
 
@@ -74,7 +78,4 @@ public class CarDO {
         this.isCarSelected = isCarSelected;
     }
 
-    public boolean isCarSelected() {
-        return isCarSelected;
-    }
 }

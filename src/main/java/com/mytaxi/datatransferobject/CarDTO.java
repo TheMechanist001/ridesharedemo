@@ -1,5 +1,6 @@
 package com.mytaxi.datatransferobject;
 
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 public class CarDTO {
@@ -12,11 +13,14 @@ public class CarDTO {
     private String engineType;
     private String manufacturer;
     private boolean isCarSelected;
+    private ZonedDateTime dateCreated;
+    private ZonedDateTime dateSelected;
+    private long selectedDriverId;
 
     private CarDTO() {
     }
 
-    private CarDTO(UUID carId, String licensePlate, int seatCount, boolean convertible, long rating, String engineType, String manufacturer, boolean isCarSelected) {
+    public CarDTO(UUID carId, String licensePlate, int seatCount, boolean convertible, long rating, String engineType, String manufacturer, boolean isCarSelected, ZonedDateTime dateCreated, ZonedDateTime dateSelected, long selectedDriverId) {
         this.carId = carId;
         this.licensePlate = licensePlate;
         this.seatCount = seatCount;
@@ -25,6 +29,9 @@ public class CarDTO {
         this.engineType = engineType;
         this.manufacturer = manufacturer;
         this.isCarSelected = isCarSelected;
+        this.dateCreated = dateCreated;
+        this.dateSelected = dateSelected;
+        this.selectedDriverId = selectedDriverId;
     }
 
     public UUID getCarId() {
@@ -59,10 +66,25 @@ public class CarDTO {
         return isCarSelected;
     }
 
+    public ZonedDateTime getDateCreated() {
+        return dateCreated;
+    }
+
+    public ZonedDateTime getDateSelected() {
+        return dateSelected;
+    }
+
+    public long getSelectedDriverId() {
+        return selectedDriverId;
+    }
+
     public static CarDTOBuilder newBuilder(){ return new CarDTOBuilder();}
 
     public static class CarDTOBuilder {
         private UUID carId;
+        private ZonedDateTime dateCreated;
+        private ZonedDateTime dateSelected;
+        private long selectedDriverId;
         private String licensePlate;
         private int seatCount;
         private boolean convertible;
@@ -71,41 +93,64 @@ public class CarDTO {
         private String manufacturer;
         private boolean isCarSelected;
 
-        public void setCarId(UUID carId) {
+        public CarDTOBuilder setCarId(UUID carId) {
             this.carId = carId;
+            return this;
         }
 
-        public void setLicensePlate(String licensePlate) {
+        public CarDTOBuilder setLicensePlate(String licensePlate) {
             this.licensePlate = licensePlate;
+            return this;
         }
 
-        public void setSeatCount(int seatCount) {
+        public CarDTOBuilder setSeatCount(int seatCount) {
             this.seatCount = seatCount;
+            return this;
         }
 
-        public void setConvertible(boolean convertible) {
+        public CarDTOBuilder setConvertible(boolean convertible) {
             this.convertible = convertible;
+            return this;
         }
 
-        public void setRating(long rating) {
+        public CarDTOBuilder setRating(long rating) {
             this.rating = rating;
+            return this;
         }
 
-        public void setEngineType(String engineType) {
+        public CarDTOBuilder setEngineType(String engineType) {
             this.engineType = engineType;
+            return this;
         }
 
-        public void setManufacturer(String manufacturer) {
+        public CarDTOBuilder setManufacturer(String manufacturer) {
             this.manufacturer = manufacturer;
+            return this;
         }
 
-        public void setCarSelected(boolean carSelected) {
+        public CarDTOBuilder setCarSelected(boolean carSelected) {
             isCarSelected = carSelected;
+            return this;
+        }
+
+        public CarDTOBuilder setDateCreated(ZonedDateTime dateCreated) {
+            this.dateCreated = dateCreated;
+            return this;
+        }
+
+        public CarDTOBuilder setDateSelected(ZonedDateTime dateSelected) {
+            this.dateSelected = dateSelected;
+            return this;
+        }
+
+        public CarDTOBuilder setSelectedDriverId(long selectedDriverId) {
+            this.selectedDriverId = selectedDriverId;
+            return this;
         }
 
         public CarDTO createCarDTO ()
         {
-            return new CarDTO(carId, licensePlate, seatCount, convertible, rating, engineType, manufacturer, isCarSelected);
+            return new CarDTO(carId, licensePlate, seatCount, convertible, rating, engineType, manufacturer, isCarSelected, dateCreated, dateSelected, selectedDriverId);
         }
     }
 }

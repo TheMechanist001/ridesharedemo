@@ -61,6 +61,22 @@ public class CarDO {
         return isCarSelected;
     }
 
+    public void setCarId(UUID carId) {
+        this.carId = carId;
+    }
+
+    public void setSelectedDriverId(long selectedDriverId) {
+        this.selectedDriverId = selectedDriverId;
+    }
+
+    public void setDateSelected(ZonedDateTime dateSelected) {
+        this.dateSelected = dateSelected;
+    }
+
+    public void setCarSelected(boolean carSelected) {
+        isCarSelected = carSelected;
+    }
+
     private CarDO() {
     }
 

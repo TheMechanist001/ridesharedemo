@@ -9,7 +9,7 @@ public class CarDTO {
     private String licensePlate;
     private int seatCount;
     private boolean convertible;
-    private long rating;
+    private float rating;
     private String engineType;
     private String manufacturer;
     private boolean isCarSelected;
@@ -20,7 +20,7 @@ public class CarDTO {
     private CarDTO() {
     }
 
-    public CarDTO(UUID carId, String licensePlate, int seatCount, boolean convertible, long rating, String engineType, String manufacturer, boolean isCarSelected, ZonedDateTime dateCreated, ZonedDateTime dateSelected, long selectedDriverId) {
+    public CarDTO(UUID carId, String licensePlate, int seatCount, boolean convertible, float rating, String engineType, String manufacturer, boolean isCarSelected, ZonedDateTime dateCreated, ZonedDateTime dateSelected, long selectedDriverId) {
         this.carId = carId;
         this.licensePlate = licensePlate;
         this.seatCount = seatCount;
@@ -46,7 +46,7 @@ public class CarDTO {
         return convertible;
     }
 
-    public long getRating() {
+    public float getRating() {
         return rating;
     }
 
@@ -88,7 +88,7 @@ public class CarDTO {
         private String licensePlate;
         private int seatCount;
         private boolean convertible;
-        private long rating;
+        private float rating;
         private String engineType;
         private String manufacturer;
         private boolean isCarSelected;
@@ -113,7 +113,7 @@ public class CarDTO {
             return this;
         }
 
-        public CarDTOBuilder setRating(long rating) {
+        public CarDTOBuilder setRating(float rating) {
             this.rating = rating;
             return this;
         }

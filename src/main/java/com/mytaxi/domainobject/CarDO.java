@@ -10,7 +10,7 @@ public class CarDO {
     private String licensePlate;
     private int seatCount;
     private boolean convertible;
-    private long rating;
+    private float rating;
     private String engineType;
     private String manufacturer;
     private long selectedDriverId;
@@ -33,7 +33,7 @@ public class CarDO {
         return convertible;
     }
 
-    public long getRating() {
+    public float getRating() {
         return rating;
     }
 
@@ -80,7 +80,7 @@ public class CarDO {
     private CarDO() {
     }
 
-    public CarDO(UUID carId, ZonedDateTime dateCreated, String licensePlate, int seatCount, boolean convertible, long rating, String engineType, String manufacturer, long selectedDriverId, ZonedDateTime dateSelected, boolean isCarSelected) {
+    public CarDO(UUID carId, ZonedDateTime dateCreated, String licensePlate, int seatCount, boolean convertible, float rating, String engineType, String manufacturer, long selectedDriverId, ZonedDateTime dateSelected, boolean isCarSelected) {
         this.carId = carId;
         this.dateCreated = dateCreated;
         this.licensePlate = licensePlate;

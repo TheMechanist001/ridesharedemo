@@ -15,7 +15,7 @@ public interface CarService {
 
     void delete(UUID carId) throws EntityNotFoundException;
 
-    void updateCarSelection(UUID carId, ZonedDateTime dateSelected, boolean isCarSelected, long selectedDriverId) throws EntityNotFoundException;
+    void updateCarSelection(UUID carId, String selectedDriverId) throws EntityNotFoundException;
 
     List<CarDO> findCars(boolean isCarSelected);
 }

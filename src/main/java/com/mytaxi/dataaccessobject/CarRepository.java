@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.UUID;
 
 public interface CarRepository extends CrudRepository<CarDO, UUID> {
-    List<CarDO> findBySelectedStatus (boolean isCarSelected);
+    List<CarDO> findByIsCarSelected (boolean isCarSelected);
 }

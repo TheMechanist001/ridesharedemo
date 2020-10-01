@@ -27,7 +27,7 @@ public class CarController {
     }
 
     @GetMapping("/{carId}")
-    public CarDTO getCar (@PathVariable UUID carId) throws EntityNotFoundException
+    public CarDTO getCar(@PathVariable UUID carId) throws EntityNotFoundException
     {
         return CarMapper.makeCarDTO(carService.findById(carId));
     }
@@ -45,8 +45,8 @@ public class CarController {
     }
 
     @PutMapping("/{carId}")
-    public void updateCarSelection(@PathVariable UUID carId, @RequestParam ZonedDateTime dateSelected, @RequestParam boolean isCarSelected, @RequestParam long selectedDriverId) throws EntityNotFoundException {
-        carService.updateCarSelection(carId, dateSelected, isCarSelected, selectedDriverId);
+    public void updateCarSelection(@PathVariable UUID carId, @RequestParam String selectedDriverId) throws EntityNotFoundException {
+        carService.updateCarSelection(carId, selectedDriverId);
     }
 
     @GetMapping

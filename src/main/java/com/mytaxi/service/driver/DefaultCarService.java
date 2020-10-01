@@ -21,7 +21,7 @@ public class DefaultCarService implements CarService {
 
     private final CarRepository carRepository;
 
-    public DefaultCarService(CarRepository carRepository) {
+    public DefaultCarService(final CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 
@@ -49,7 +49,7 @@ public class DefaultCarService implements CarService {
 
     @Override
     @Transactional
-    public void delete(UUID carId) throws EntityNotFoundException {
+    public void delete(UUID carId) {
         CarDO car;
         try
         {
@@ -57,24 +57,23 @@ public class DefaultCarService implements CarService {
         }
         catch (Exception e)
         {
-            LOG.error("Exception while deleting a car with ID: {}", carId, e);
+            LOG.warn("Exception while deleting a car with ID: {}", carId, e);
         }
 
     }
 
     @Override
-    public void updateCarSelection(UUID carId, ZonedDateTime dateSelected, boolean isCarSelected, long selectedDriverId) throws EntityNotFoundException {
+    @Transactional
+    public void updateCarSelection(UUID carId, String selectedDriverId) throws EntityNotFoundException {
 
         CarDO carDO = findCarChecked(carId);
-        carDO.setDateSelected(dateSelected);
-        carDO.setCarSelected(isCarSelected);
         carDO.setSelectedDriverId(selectedDriverId);
 
     }
 
     @Override
     public List<CarDO> findCars(boolean isCarSelected) {
-        return carRepository.findBySelectedStatus(isCarSelected);
+        return carRepository.findByIsCarSelected(isCarSelected);
     }
 
     private CarDO findCarChecked(UUID carId) throws EntityNotFoundException {

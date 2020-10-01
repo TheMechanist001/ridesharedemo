@@ -1,26 +1,47 @@
 package com.mytaxi.datatransferobject;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarDTO {
 
+    @JsonIgnore
     private UUID carId;
+
+    @NotNull(message = "License Plate cannot be null!")
     private String licensePlate;
+
+    @NotNull(message = "Seat Count cannot be null!")
     private int seatCount;
+
     private boolean convertible;
+
     private float rating;
+
+    @NotNull(message = "Engine Type cannot be null!")
     private String engineType;
+
+    @NotNull(message = "Manufacturer cannot be null!")
     private String manufacturer;
+
     private boolean isCarSelected;
+
     private ZonedDateTime dateCreated;
+
     private ZonedDateTime dateSelected;
-    private long selectedDriverId;
+
+    private String selectedDriverId;
 
     private CarDTO() {
     }
 
-    public CarDTO(UUID carId, String licensePlate, int seatCount, boolean convertible, float rating, String engineType, String manufacturer, boolean isCarSelected, ZonedDateTime dateCreated, ZonedDateTime dateSelected, long selectedDriverId) {
+    public CarDTO(UUID carId, String licensePlate, int seatCount, boolean convertible, float rating, String engineType, String manufacturer, boolean isCarSelected, ZonedDateTime dateCreated, ZonedDateTime dateSelected, String selectedDriverId) {
         this.carId = carId;
         this.licensePlate = licensePlate;
         this.seatCount = seatCount;
@@ -34,6 +55,7 @@ public class CarDTO {
         this.selectedDriverId = selectedDriverId;
     }
 
+    @JsonProperty
     public UUID getCarId() {
         return carId;
     }
@@ -74,7 +96,7 @@ public class CarDTO {
         return dateSelected;
     }
 
-    public long getSelectedDriverId() {
+    public String getSelectedDriverId() {
         return selectedDriverId;
     }
 
@@ -84,7 +106,7 @@ public class CarDTO {
         private UUID carId;
         private ZonedDateTime dateCreated;
         private ZonedDateTime dateSelected;
-        private long selectedDriverId;
+        private String selectedDriverId;
         private String licensePlate;
         private int seatCount;
         private boolean convertible;
@@ -143,7 +165,7 @@ public class CarDTO {
             return this;
         }
 
-        public CarDTOBuilder setSelectedDriverId(long selectedDriverId) {
+        public CarDTOBuilder setSelectedDriverId(String selectedDriverId) {
             this.selectedDriverId = selectedDriverId;
             return this;
         }

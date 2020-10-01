@@ -30,7 +30,7 @@ public class CarDO {
     @Column(nullable = false)
     private boolean convertible = false;
 
-    @Column
+    @Column(nullable = false)
     private float rating;
 
     @Column(nullable = false)
@@ -44,11 +44,11 @@ public class CarDO {
     @Column
     private String selectedDriverId;
 
-    @Column
+    @Column(nullable = false)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private ZonedDateTime dateSelected;
 
-    @Column
+    @Column(nullable = false)
     private boolean isCarSelected;
 
     public UUID getCarId() {

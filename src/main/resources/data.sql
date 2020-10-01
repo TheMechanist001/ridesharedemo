@@ -43,22 +43,22 @@ values
 
 --Create cars
 
-insert into car (id, date_created, license_plate, seat_count, convertible, rating,
+insert into car (car_id, date_created, license_plate, seat_count, convertible, rating,
                 engine_type, manufacturer, selected_driver_id, date_selected, is_car_selected)
-values (uuid(), now(), 'B1124', 4, false, 3.2, 'gas', 'Toyota', null , null , null );
+values (uuid(), now(), 'B1124', 4, false, 3.2, 'gas', 'Toyota', null , now() , false );
 
-insert into car (id, date_created, license_plate, seat_count, convertible, rating,
+insert into car (car_id, date_created, license_plate, seat_count, convertible, rating,
                 engine_type, manufacturer, selected_driver_id, date_selected, is_car_selected)
-values (uuid(), now(), 'V1674', 4, true, 4.3, 'gas', 'Mercedes', null , null , null );
+values (uuid(), now(), 'V1674', 4, true, 4.3, 'gas', 'Mercedes', null , now() , false );
 
-insert into car (id, date_created, license_plate, seat_count, convertible, rating,
+insert into car (car_id, date_created, license_plate, seat_count, convertible, rating,
                 engine_type, manufacturer, selected_driver_id, date_selected, is_car_selected)
-values (uuid(), now(), 'G5432', 6, false, 3.6, 'gas', 'Subaru', null , null , null );
+values (uuid(), now(), 'G5432', 6, false, 3.6, 'gas', 'Subaru', null , now() , false );
 
-insert into car (id, date_created, license_plate, seat_count, convertible, rating,
+insert into car (car_id, date_created, license_plate, seat_count, convertible, rating,
                 engine_type, manufacturer, selected_driver_id, date_selected, is_car_selected)
-values (uuid(), now(), 'K6477', 4, false, 4.7, 'hybrid', 'Toyota', null , null , null );
+values (uuid(), now(), 'K6477', 4, false, 4.7, 'hybrid', 'Toyota', null , now() , false );
 
-insert into car (id, date_created, license_plate, seat_count, convertible, rating,
+insert into car (car_id, date_created, license_plate, seat_count, convertible, rating,
                 engine_type, manufacturer, selected_driver_id, date_selected, is_car_selected)
-values (uuid(), now(), 'T4566', 2, true, 4.9, 'electric', 'Tesla', null , null , null );
+values (uuid(), now(), 'T4566', 2, true, 4.9, 'electric', 'Tesla', null , now() , false );

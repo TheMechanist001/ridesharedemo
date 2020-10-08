@@ -37,11 +37,12 @@ public class DefaultCarService implements CarService {
         CarDO car;
         try
         {
+            LOG.warn("This is before save:" + carDO.toString());
             car = carRepository.save(carDO);
         }
         catch (DataIntegrityViolationException e)
         {
-            LOG.warn("ConstraintsViolationException while creating a car: {}", carDO, e);
+            LOG.error("ConstraintsViolationException while creating a car: {}", carDO.toString(), e);
             throw new ConstraintsViolationException(e.getMessage());
         }
         return car;

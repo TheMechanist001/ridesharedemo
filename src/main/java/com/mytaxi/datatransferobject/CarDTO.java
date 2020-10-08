@@ -12,7 +12,7 @@ import java.util.UUID;
 public class CarDTO {
 
     @JsonIgnore
-    private UUID carId;
+    private UUID carId = UUID.randomUUID();
 
     @NotNull(message = "License Plate cannot be null!")
     private String licensePlate;
@@ -32,9 +32,9 @@ public class CarDTO {
 
     private boolean isCarSelected;
 
-    private ZonedDateTime dateCreated;
+    private ZonedDateTime dateCreated = ZonedDateTime.now();
 
-    private ZonedDateTime dateSelected;
+    private ZonedDateTime dateSelected = ZonedDateTime.now();
 
     private String selectedDriverId;
 

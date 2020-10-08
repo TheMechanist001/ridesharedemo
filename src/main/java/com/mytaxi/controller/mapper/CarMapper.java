@@ -17,13 +17,16 @@ public class CarMapper {
     {
         CarDTO.CarDTOBuilder carDTOBuilder = CarDTO.newBuilder()
                 .setCarId(carDO.getCarId())
+                .setDateCreated(carDO.getDateCreated())
                 .setLicensePlate(carDO.getLicensePlate())
                 .setSeatCount(carDO.getSeatCount())
                 .setConvertible(carDO.isConvertible())
                 .setRating(carDO.getRating())
                 .setEngineType(carDO.getEngineType())
                 .setManufacturer(carDO.getManufacturer())
-                .setCarSelected(carDO.isCarSelected());
+                .setCarSelected(carDO.isCarSelected())
+                .setDateSelected(carDO.getDateSelected())
+                .setSelectedDriverId(carDO.getSelectedDriverId());
         return carDTOBuilder.createCarDTO();
     }
 

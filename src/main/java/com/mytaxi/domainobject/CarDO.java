@@ -130,4 +130,11 @@ public class CarDO {
         this.isCarSelected = isCarSelected;
     }
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "[carId= " + carId + ", dateCreated= " + dateCreated + ", licensePlate= " + licensePlate + ", seatCount= " + seatCount
+                + ", convertible= " + convertible + ", rating= " + rating + ", engineType= " + engineType + ", manufacturer= " + manufacturer
+                + ", selectedDriverId= " + selectedDriverId + ", dateSelected= " + dateSelected + ", isCarSelected= " + isCarSelected + "]";
+    }
+
 }

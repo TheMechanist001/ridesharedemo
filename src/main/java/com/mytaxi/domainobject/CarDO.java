@@ -12,7 +12,8 @@ import java.util.UUID;
 public class CarDO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    @NotNull(message = "Car Id cannot be null!")
     private UUID carId;
 
     @Column(nullable = false)

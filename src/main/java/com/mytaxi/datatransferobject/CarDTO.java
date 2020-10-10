@@ -8,10 +8,8 @@ import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 import java.util.UUID;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CarDTO {
 
-    @JsonIgnore
     private UUID carId = UUID.randomUUID();
 
     @NotNull(message = "License Plate cannot be null!")
@@ -55,7 +53,6 @@ public class CarDTO {
         this.selectedDriverId = selectedDriverId;
     }
 
-    @JsonProperty
     public UUID getCarId() {
         return carId;
     }

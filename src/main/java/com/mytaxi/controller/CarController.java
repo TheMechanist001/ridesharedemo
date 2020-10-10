@@ -6,6 +6,9 @@ import com.mytaxi.domainobject.CarDO;
 import com.mytaxi.exception.ConstraintsViolationException;
 import com.mytaxi.exception.EntityNotFoundException;
 import com.mytaxi.service.driver.CarService;
+import com.mytaxi.service.driver.DefaultCarService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +21,8 @@ import java.util.UUID;
 @RestController
 @RequestMapping("v1/cars")
 public class CarController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(CarController.class);
 
     private final CarService carService;
 
@@ -36,6 +41,7 @@ public class CarController {
     @ResponseStatus(HttpStatus.CREATED)
     public CarDTO createCar(@Valid @RequestBody CarDTO carDTO) throws ConstraintsViolationException {
         CarDO carDO = CarMapper.makeCarDO(carDTO);
+        LOG.warn("Display CarDO in controller: "+carDO.toString());
         return CarMapper.makeCarDTO(carService.create(carDO));
     }
 

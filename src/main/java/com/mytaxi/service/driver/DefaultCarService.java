@@ -37,7 +37,7 @@ public class DefaultCarService implements CarService {
         CarDO car;
         try
         {
-            LOG.warn("This is before save:" + carDO.toString());
+            LOG.warn("Display CarDO in create before save: " + carDO.toString());
             car = carRepository.save(carDO);
         }
         catch (DataIntegrityViolationException e)

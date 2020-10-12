@@ -41,7 +41,6 @@ public class CarController {
     @ResponseStatus(HttpStatus.CREATED)
     public CarDTO createCar(@Valid @RequestBody CarDTO carDTO) throws ConstraintsViolationException {
         CarDO carDO = CarMapper.makeCarDO(carDTO);
-        LOG.warn("Display CarDO in controller: "+carDO.toString());
         return CarMapper.makeCarDTO(carService.create(carDO));
     }
 

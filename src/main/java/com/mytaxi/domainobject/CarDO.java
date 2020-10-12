@@ -102,8 +102,6 @@ public class CarDO {
 
     public void setSelectedDriverId(String selectedDriverId) {
         this.selectedDriverId = selectedDriverId;
-        this.dateSelected = ZonedDateTime.now();
-        this.isCarSelected = selectedDriverId != null;
     }
 
     public void setDateSelected(ZonedDateTime dateSelected) {

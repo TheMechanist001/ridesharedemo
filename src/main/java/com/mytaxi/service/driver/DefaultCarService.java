@@ -37,7 +37,6 @@ public class DefaultCarService implements CarService {
         CarDO car;
         try
         {
-            LOG.warn("Display CarDO in create before save: " + carDO.toString());
             car = carRepository.save(carDO);
         }
         catch (DataIntegrityViolationException e)
@@ -50,16 +49,12 @@ public class DefaultCarService implements CarService {
 
     @Override
     @Transactional
-    public void delete(UUID carId) {
-        CarDO car;
-        try
-        {
-            carRepository.deleteById(carId);
-        }
-        catch (Exception e)
-        {
-            LOG.warn("Exception while deleting a car with ID: {}", carId, e);
-        }
+    public void delete(UUID carId) throws EntityNotFoundException {
+
+        CarDO carDO = findCarChecked(carId);
+        carDO.setSelectedDriverId(null);
+        carDO.setDateSelected(ZonedDateTime.now());
+        carDO.setCarSelected(false);
 
     }
 
@@ -69,6 +64,8 @@ public class DefaultCarService implements CarService {
 
         CarDO carDO = findCarChecked(carId);
         carDO.setSelectedDriverId(selectedDriverId);
+        carDO.setDateSelected(ZonedDateTime.now());
+        carDO.setCarSelected(true);
 
     }
 

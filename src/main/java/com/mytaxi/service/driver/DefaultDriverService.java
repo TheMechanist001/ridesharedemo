@@ -1,6 +1,7 @@
 package com.mytaxi.service.driver;
 
 import com.mytaxi.dataaccessobject.DriverRepository;
+import com.mytaxi.domainobject.CarDO;
 import com.mytaxi.domainobject.DriverDO;
 import com.mytaxi.domainvalue.GeoCoordinate;
 import com.mytaxi.domainvalue.OnlineStatus;
@@ -112,6 +113,16 @@ public class DefaultDriverService implements DriverService
     {
         return driverRepository.findByOnlineStatus(onlineStatus);
     }
+
+    /**
+     * Find all drivers by car and driver attributes
+     *
+     * @param carDO
+     * @param driverDO
+     * @return
+     */
+    @Override
+    public List<DriverDO> findByCarDoOrDriverDo(CarDO carDO, DriverDO driverDO) {return driverRepository.findByCarDoOrDriverDo(carDO, driverDO);}
 
 
     private DriverDO findDriverChecked(Long driverId) throws EntityNotFoundException

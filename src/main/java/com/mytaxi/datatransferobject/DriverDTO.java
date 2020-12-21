@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mytaxi.domainvalue.GeoCoordinate;
+import com.mytaxi.domainvalue.OnlineStatus;
+
 import javax.validation.constraints.NotNull;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -71,6 +73,8 @@ public class DriverDTO
         private String username;
         private String password;
         private GeoCoordinate coordinate;
+        private Boolean deleted;
+        private OnlineStatus onlineStatus;
 
 
         public DriverDTOBuilder setId(Long id)
@@ -101,10 +105,31 @@ public class DriverDTO
         }
 
 
+        public DriverDTOBuilder setDeleted(Boolean deleted)
+        {
+            this.deleted = deleted;
+            return this;
+        }
+
+
+        public DriverDTOBuilder setOnlineStatus(OnlineStatus onlineStatus)
+        {
+            this.onlineStatus = onlineStatus;
+            return this;
+        }
+
+
         public DriverDTO createDriverDTO()
         {
             return new DriverDTO(id, username, password, coordinate);
         }
 
+        public Boolean getDeleted() {
+            return deleted;
+        }
+
+        public OnlineStatus getOnlineStatus() {
+            return onlineStatus;
+        }
     }
 }

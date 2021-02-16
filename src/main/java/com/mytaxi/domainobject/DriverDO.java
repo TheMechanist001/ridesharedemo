@@ -5,6 +5,9 @@ import com.mytaxi.domainvalue.OnlineStatus;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -45,6 +48,11 @@ public class DriverDO
     @Column(nullable = false)
     private OnlineStatus onlineStatus;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id", insertable = false, updatable = false)
+    @Fetch(FetchMode.JOIN)
+    private CarDO carDO;
+
 
     private DriverDO()
     {
@@ -53,6 +61,15 @@ public class DriverDO
 
     public DriverDO(String username, String password)
     {
+        this.username = username;
+        this.password = password;
+        this.deleted = false;
+        this.coordinate = null;
+        this.dateCoordinateUpdated = null;
+        this.onlineStatus = OnlineStatus.OFFLINE;
+    }
+
+    public DriverDO(Long id, String username, String password, GeoCoordinate coordinate, Boolean deleted, OnlineStatus onlineStatus) {
         this.username = username;
         this.password = password;
         this.deleted = false;

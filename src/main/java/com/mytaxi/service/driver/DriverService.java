@@ -1,10 +1,12 @@
 package com.mytaxi.service.driver;
 
-import com.mytaxi.domainobject.CarDO;
 import com.mytaxi.domainobject.DriverDO;
+import com.mytaxi.domainvalue.GeoCoordinate;
 import com.mytaxi.domainvalue.OnlineStatus;
 import com.mytaxi.exception.ConstraintsViolationException;
 import com.mytaxi.exception.EntityNotFoundException;
+
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public interface DriverService
@@ -20,6 +22,8 @@ public interface DriverService
 
     List<DriverDO> find(OnlineStatus onlineStatus);
 
-    List<DriverDO> findByCarDoOrDriverDo(CarDO carDO, DriverDO driverDO);
+    List<DriverDO> findDriverCarLeftJoin(Long id, GeoCoordinate coordinate, ZonedDateTime dateCoordinateUpdated,
+                                          ZonedDateTime dateCreated, Boolean deleted, OnlineStatus onlineStatus,
+                                          String username, String password);
 
 }

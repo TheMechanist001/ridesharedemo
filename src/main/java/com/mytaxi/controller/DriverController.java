@@ -4,11 +4,13 @@ import com.mytaxi.controller.mapper.DriverMapper;
 import com.mytaxi.datatransferobject.DriverDTO;
 import com.mytaxi.domainobject.CarDO;
 import com.mytaxi.domainobject.DriverDO;
+import com.mytaxi.domainvalue.GeoCoordinate;
 import com.mytaxi.domainvalue.OnlineStatus;
 import com.mytaxi.exception.ConstraintsViolationException;
 import com.mytaxi.exception.EntityNotFoundException;
 import com.mytaxi.service.driver.DriverService;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 import javax.validation.Valid;
 
@@ -75,9 +77,10 @@ public class DriverController {
         return DriverMapper.makeDriverDTOList(driverService.find(onlineStatus));
     }
 
-
     @GetMapping
-    public List<DriverDTO> findByCarDoOrDriverDo(@RequestParam CarDO carDO, @RequestParam DriverDO driverDO) {
-        return DriverMapper.makeAllDriverDTOList(driverService.findByCarDoOrDriverDo(carDO, driverDO));
+    public List<DriverDTO> findDriverCarLeftJoin(@RequestParam Long id, @RequestParam GeoCoordinate coordinate, @RequestParam ZonedDateTime dateCoordinateUpdated,
+                                                 ZonedDateTime dateCreated, Boolean deleted, OnlineStatus onlineStatus,
+                                                 String username, String password) {
+        return DriverMapper.makeAllDriverDTOList(driverService.findDriverCarLeftJoin(id, coordinate, dateCoordinateUpdated, dateCreated, deleted, onlineStatus, username, password));
     }
 }

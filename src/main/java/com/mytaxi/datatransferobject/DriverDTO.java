@@ -9,8 +9,7 @@ import com.mytaxi.domainvalue.OnlineStatus;
 import javax.validation.constraints.NotNull;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DriverDTO
-{
+public class DriverDTO {
     @JsonIgnore
     private Long id;
 
@@ -22,14 +21,16 @@ public class DriverDTO
 
     private GeoCoordinate coordinate;
 
+    private Boolean deleted;
 
-    private DriverDTO()
-    {
+    private OnlineStatus onlineStatus;
+
+
+    private DriverDTO() {
     }
 
 
-    private DriverDTO(Long id, String username, String password, GeoCoordinate coordinate)
-    {
+    private DriverDTO(Long id, String username, String password, GeoCoordinate coordinate) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -37,38 +38,36 @@ public class DriverDTO
     }
 
 
-    public static DriverDTOBuilder newBuilder()
-    {
+    public static DriverDTOBuilder newBuilder() {
         return new DriverDTOBuilder();
     }
 
 
     @JsonProperty
-    public Long getId()
-    {
+    public Long getId() {
         return id;
     }
 
 
-    public String getUsername()
-    {
+    public String getUsername() {
         return username;
     }
 
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
 
-    public GeoCoordinate getCoordinate()
-    {
+    public GeoCoordinate getCoordinate() {
         return coordinate;
     }
 
-    public static class DriverDTOBuilder
-    {
+    public Boolean getDeleted() { return deleted; }
+
+    public OnlineStatus getOnlineStatus() { return onlineStatus; }
+
+    public static class DriverDTOBuilder {
         private Long id;
         private String username;
         private String password;
@@ -77,59 +76,45 @@ public class DriverDTO
         private OnlineStatus onlineStatus;
 
 
-        public DriverDTOBuilder setId(Long id)
-        {
+        public DriverDTOBuilder setId(Long id) {
             this.id = id;
             return this;
         }
 
 
-        public DriverDTOBuilder setUsername(String username)
-        {
+        public DriverDTOBuilder setUsername(String username) {
             this.username = username;
             return this;
         }
 
 
-        public DriverDTOBuilder setPassword(String password)
-        {
+        public DriverDTOBuilder setPassword(String password) {
             this.password = password;
             return this;
         }
 
 
-        public DriverDTOBuilder setCoordinate(GeoCoordinate coordinate)
-        {
+        public DriverDTOBuilder setCoordinate(GeoCoordinate coordinate) {
             this.coordinate = coordinate;
             return this;
         }
 
 
-        public DriverDTOBuilder setDeleted(Boolean deleted)
-        {
+        public DriverDTOBuilder setDeleted(Boolean deleted) {
             this.deleted = deleted;
             return this;
         }
 
 
-        public DriverDTOBuilder setOnlineStatus(OnlineStatus onlineStatus)
-        {
+        public DriverDTOBuilder setOnlineStatus(OnlineStatus onlineStatus) {
             this.onlineStatus = onlineStatus;
             return this;
         }
 
 
-        public DriverDTO createDriverDTO()
-        {
+        public DriverDTO createDriverDTO() {
             return new DriverDTO(id, username, password, coordinate);
         }
 
-        public Boolean getDeleted() {
-            return deleted;
-        }
-
-        public OnlineStatus getOnlineStatus() {
-            return onlineStatus;
-        }
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -51,6 +52,9 @@ public class CarDO {
 
     @Column(nullable = false)
     private boolean isCarSelected;
+
+    @OneToMany(targetEntity = DriverDO.class, mappedBy = "id", orphanRemoval = false, fetch = FetchType.LAZY)
+    private Set<DriverDO> driverDO;
 
     public UUID getCarId() {
         return carId;

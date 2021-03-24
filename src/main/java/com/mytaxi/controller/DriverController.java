@@ -78,9 +78,7 @@ public class DriverController {
     }
 
     @GetMapping
-    public List<DriverDTO> findDriverCarLeftJoin(@RequestParam Long id, @RequestParam GeoCoordinate coordinate, @RequestParam ZonedDateTime dateCoordinateUpdated,
-                                                 ZonedDateTime dateCreated, Boolean deleted, OnlineStatus onlineStatus,
-                                                 String username, String password) {
-        return DriverMapper.makeAllDriverDTOList(driverService.findDriverCarLeftJoin(id, coordinate, dateCoordinateUpdated, dateCreated, deleted, onlineStatus, username, password));
+    public List<DriverDTO> findDriverCarLeftJoin(@RequestParam String username, @RequestParam OnlineStatus onlineStatus, @RequestParam String licensePlate, @RequestParam int seatCount, @RequestParam float rating, @RequestParam String engineType, @RequestParam String manufacturer) {
+        return DriverMapper.makeAllDriverDTOList(driverService.findDriverCarLeftJoin(username, onlineStatus, licensePlate, seatCount, rating, engineType, manufacturer));
     }
 }

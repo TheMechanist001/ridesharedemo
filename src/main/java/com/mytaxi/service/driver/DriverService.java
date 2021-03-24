@@ -22,8 +22,6 @@ public interface DriverService
 
     List<DriverDO> find(OnlineStatus onlineStatus);
 
-    List<DriverDO> findDriverCarLeftJoin(Long id, GeoCoordinate coordinate, ZonedDateTime dateCoordinateUpdated,
-                                          ZonedDateTime dateCreated, Boolean deleted, OnlineStatus onlineStatus,
-                                          String username, String password);
+    List<DriverDO> findDriverCarLeftJoin(String username, OnlineStatus onlineStatus, String licensePlate, int seatCount, float rating, String engineType, String manufacturer);
 
 }

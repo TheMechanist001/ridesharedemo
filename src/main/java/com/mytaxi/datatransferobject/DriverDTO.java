@@ -36,6 +36,15 @@ public class DriverDTO {
         this.password = password;
         this.coordinate = coordinate;
     }
+    //for Task 3
+    public DriverDTO(Long id, String username, String password, GeoCoordinate coordinate, Boolean deleted, OnlineStatus onlineStatus) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.coordinate = coordinate;
+        this.deleted = deleted;
+        this.onlineStatus = onlineStatus;
+    }
 
 
     public static DriverDTOBuilder newBuilder() {

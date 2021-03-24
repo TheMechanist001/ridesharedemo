@@ -116,10 +116,8 @@ public class DefaultDriverService implements DriverService {
 
      */
 
-    public List<DriverDO> findDriverCarLeftJoin(Long id, GeoCoordinate coordinate, ZonedDateTime dateCoordinateUpdated,
-                                                 ZonedDateTime dateCreated, Boolean deleted, OnlineStatus onlineStatus,
-                                                 String username, String password) {
-        return driverRepository.fetchDriverCarDataLeftJoin(id, coordinate, dateCoordinateUpdated, dateCreated, deleted, onlineStatus, username, password);
+    public List<DriverDO> findDriverCarLeftJoin(String username, OnlineStatus onlineStatus, String licensePlate, int seatCount, float rating, String engineType, String manufacturer) {
+        return driverRepository.fetchDriverCarDataLeftJoin(username, onlineStatus, licensePlate, seatCount, rating, engineType, manufacturer);
     }
 
 }

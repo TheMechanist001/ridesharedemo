@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Database Access Object for driver table.
@@ -19,14 +20,12 @@ public interface DriverRepository extends CrudRepository<DriverDO, Long> {
 
     List<DriverDO> findByOnlineStatus(OnlineStatus onlineStatus);
 
-    @Query("SELECT new com.mytaxi.datatransferobject.DriverDTO(d.id, d.coordinate, " +
-            "d.date_coordinate_updated, d.date_created, d.deleted, d.online_status, d.username, d.password) " +
-            "FROM Driver d " +
-            "LEFT JOIN Car c ON d.id = c.selected_driver_id " +
-            "WHERE d.username = ? " +
-            "OR d.online_status = ? OR c.license_plate = ? OR c.seat_count = ? " +
-            "OR c.rating = ? OR c.engine_type = ? OR c.manufacturer = ?;")
-    List<DriverDO> fetchDriverCarDataLeftJoin(Long id, GeoCoordinate coordinate, ZonedDateTime dateCoordinateUpdated,
-                                               ZonedDateTime dateCreated, Boolean deleted, OnlineStatus onlineStatus,
-                                               String username, String password);
+    @Query("SELECT new com.mytaxi.datatransferobject.DriverDTO(d.id, d.username, " +
+            "d.password, d.coordinate, d.deleted, d.onlineStatus) " +
+            "FROM DriverDO d " +
+            "LEFT JOIN CarDO c ON d.id = c.selectedDriverId " +
+            "WHERE d.username = :username " +
+            "OR d.onlineStatus = :onlineStatus OR c.licensePlate = :licensePlate OR c.seatCount = :seatCount " +
+            "OR c.rating = :rating OR c.engineType = :engineType OR c.manufacturer = :manufacturer")
+    List<DriverDO> fetchDriverCarDataLeftJoin(@Param("username") String username, @Param("onlineStatus") OnlineStatus onlineStatus, @Param("licensePlate") String licensePlate, @Param("seatCount") int seatCount, @Param("rating") float rating, @Param("engineType") String engineType, @Param("manufacturer") String manufacturer);
 }

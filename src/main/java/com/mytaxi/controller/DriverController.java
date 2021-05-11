@@ -2,6 +2,7 @@ package com.mytaxi.controller;
 
 import com.mytaxi.controller.mapper.DriverMapper;
 import com.mytaxi.datatransferobject.DriverDTO;
+import com.mytaxi.datatransferobject.DriverLeftJoinDTO;
 import com.mytaxi.domainobject.CarDO;
 import com.mytaxi.domainobject.DriverDO;
 import com.mytaxi.domainvalue.GeoCoordinate;
@@ -72,13 +73,13 @@ public class DriverController {
     }
 
 
-    @GetMapping
+    @GetMapping("/onlineStatus")
     public List<DriverDTO> findDrivers(@RequestParam OnlineStatus onlineStatus) {
         return DriverMapper.makeDriverDTOList(driverService.find(onlineStatus));
     }
 
-    @GetMapping
-    public List<DriverDTO> findDriverCarLeftJoin(@RequestParam String username, @RequestParam OnlineStatus onlineStatus, @RequestParam String licensePlate, @RequestParam int seatCount, @RequestParam float rating, @RequestParam String engineType, @RequestParam String manufacturer) {
-        return DriverMapper.makeAllDriverDTOList(driverService.findDriverCarLeftJoin(username, onlineStatus, licensePlate, seatCount, rating, engineType, manufacturer));
+    @GetMapping("/driver")
+    public List<DriverLeftJoinDTO> findDriverCarLeftJoin(@RequestParam String username, @RequestParam OnlineStatus onlineStatus, @RequestParam String licensePlate, @RequestParam int seatCount, @RequestParam float rating, @RequestParam String engineType, @RequestParam String manufacturer) {
+        return DriverMapper.makeDriverCarLeftJoinDTOList(driverService.findDriverCarLeftJoin(username, onlineStatus, licensePlate, seatCount, rating, engineType, manufacturer));
     }
 }

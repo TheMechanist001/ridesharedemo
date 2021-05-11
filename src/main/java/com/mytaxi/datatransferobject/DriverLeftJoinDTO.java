@@ -8,8 +8,11 @@ import com.mytaxi.domainvalue.OnlineStatus;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * This DTO is for Task 3 only
+ */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class DriverDTO {
+public class DriverLeftJoinDTO {
     @JsonIgnore
     private Long id;
 
@@ -26,20 +29,22 @@ public class DriverDTO {
     private OnlineStatus onlineStatus;
 
 
-    private DriverDTO() {
+    private DriverLeftJoinDTO() {
     }
 
-
-    private DriverDTO(Long id, String username, String password, GeoCoordinate coordinate) {
+    //for Task 3
+    public DriverLeftJoinDTO(Long id, String username, String password, GeoCoordinate coordinate, Boolean deleted, OnlineStatus onlineStatus) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.coordinate = coordinate;
+        this.deleted = deleted;
+        this.onlineStatus = onlineStatus;
     }
 
 
-    public static DriverDTOBuilder newBuilder() {
-        return new DriverDTOBuilder();
+    public static DriverLeftJoinDTOBuilder newBuilder() {
+        return new DriverLeftJoinDTOBuilder();
     }
 
 
@@ -67,7 +72,7 @@ public class DriverDTO {
 
     public OnlineStatus getOnlineStatus() { return onlineStatus; }
 
-    public static class DriverDTOBuilder {
+    public static class DriverLeftJoinDTOBuilder {
         private Long id;
         private String username;
         private String password;
@@ -76,44 +81,44 @@ public class DriverDTO {
         private OnlineStatus onlineStatus;
 
 
-        public DriverDTOBuilder setId(Long id) {
+        public DriverLeftJoinDTOBuilder setId(Long id) {
             this.id = id;
             return this;
         }
 
 
-        public DriverDTOBuilder setUsername(String username) {
+        public DriverLeftJoinDTOBuilder setUsername(String username) {
             this.username = username;
             return this;
         }
 
 
-        public DriverDTOBuilder setPassword(String password) {
+        public DriverLeftJoinDTOBuilder setPassword(String password) {
             this.password = password;
             return this;
         }
 
 
-        public DriverDTOBuilder setCoordinate(GeoCoordinate coordinate) {
+        public DriverLeftJoinDTOBuilder setCoordinate(GeoCoordinate coordinate) {
             this.coordinate = coordinate;
             return this;
         }
 
 
-        public DriverDTOBuilder setDeleted(Boolean deleted) {
+        public DriverLeftJoinDTOBuilder setDeleted(Boolean deleted) {
             this.deleted = deleted;
             return this;
         }
 
 
-        public DriverDTOBuilder setOnlineStatus(OnlineStatus onlineStatus) {
+        public DriverLeftJoinDTOBuilder setOnlineStatus(OnlineStatus onlineStatus) {
             this.onlineStatus = onlineStatus;
             return this;
         }
 
 
-        public DriverDTO createDriverDTO() {
-            return new DriverDTO(id, username, password, coordinate);
+        public DriverLeftJoinDTO createDriverLeftJoinDTO() {
+            return new DriverLeftJoinDTO(id, username, password, coordinate, deleted, onlineStatus);
         }
 
     }

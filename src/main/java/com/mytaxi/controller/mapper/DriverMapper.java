@@ -1,6 +1,7 @@
 package com.mytaxi.controller.mapper;
 
 import com.mytaxi.datatransferobject.DriverDTO;
+import com.mytaxi.datatransferobject.DriverLeftJoinDTO;
 import com.mytaxi.domainobject.DriverDO;
 import com.mytaxi.domainvalue.GeoCoordinate;
 
@@ -35,9 +36,9 @@ public class DriverMapper {
                 .collect(Collectors.toList());
     }
 
-    //Mapper to pull all drivers using all attributes of car and driver
-    public static DriverDTO makeAllDriverDTO(DriverDO driverDO) {
-        DriverDTO.DriverDTOBuilder driverDTOBuilder = DriverDTO.newBuilder()
+    //Task 3: Mapper to pull all drivers using all attributes of car and driver
+    public static DriverLeftJoinDTO makeDriverCarLeftJoinDTO(DriverDO driverDO) {
+        DriverLeftJoinDTO.DriverLeftJoinDTOBuilder driverLeftJoinDTOBuilder = DriverLeftJoinDTO.newBuilder()
                 .setId(driverDO.getId())
                 .setPassword(driverDO.getPassword())
                 .setUsername(driverDO.getUsername())
@@ -46,13 +47,13 @@ public class DriverMapper {
 
         GeoCoordinate coordinate = driverDO.getCoordinate();
         if (coordinate != null) {
-            driverDTOBuilder.setCoordinate(coordinate);
+            driverLeftJoinDTOBuilder.setCoordinate(coordinate);
         }
 
-        return driverDTOBuilder.createDriverDTO();
+        return driverLeftJoinDTOBuilder.createDriverLeftJoinDTO();
     }
 
-    public static List<DriverDTO> makeAllDriverDTOList(Collection<DriverDO> drivers) {
-        return drivers.stream().map(DriverMapper::makeAllDriverDTO).collect(Collectors.toList());
+    public static List<DriverLeftJoinDTO> makeDriverCarLeftJoinDTOList(Collection<DriverDO> drivers) {
+        return drivers.stream().map(DriverMapper::makeDriverCarLeftJoinDTO).collect(Collectors.toList());
     }
 }

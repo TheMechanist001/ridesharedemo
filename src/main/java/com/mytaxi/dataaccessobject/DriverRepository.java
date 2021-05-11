@@ -20,7 +20,7 @@ public interface DriverRepository extends CrudRepository<DriverDO, Long> {
 
     List<DriverDO> findByOnlineStatus(OnlineStatus onlineStatus);
 
-    @Query("SELECT new com.mytaxi.datatransferobject.DriverDTO(d.id, d.username, " +
+    @Query("SELECT new com.mytaxi.datatransferobject.DriverLeftJoinDTO(d.id, d.username, " +
             "d.password, d.coordinate, d.deleted, d.onlineStatus) " +
             "FROM DriverDO d " +
             "LEFT JOIN CarDO c ON d.id = c.selectedDriverId " +
